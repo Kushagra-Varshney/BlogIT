@@ -4,6 +4,7 @@ const path = require('path');
 const connectDB = require('./connectdb');
 const cookieParser = require('cookie-parser');
 const {checkAuthenticationCookie} = require('./middlewares/auth');
+const {getAllBlogs} = require('./controllers/blog');
 
 //CONSTANTS
 const PORT = process.env.PORT || 8000;
@@ -23,14 +24,17 @@ app.set('views', path.join(__dirname, 'views'));
 //MIDDLEWARE
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(checkAuthenticationCookie('token'));
 app.use('/users', userRouter);
 app.use('/blog', blogRouter);
 
 //ROUTES
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+    const blogs = await getAllBlogs();
     res.render('home', {
-        user: req.user
+        user: req.user,
+        blogs: blogs,
     });
 }); 
 
