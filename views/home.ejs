@@ -12,7 +12,7 @@
       <% blogs.forEach(blog=> {
         %>
         <div class="card" style="width: 18rem;">
-          <img src="<%= blog.coverImageURL %>" class="img-thumbnail" alt="...">
+          <img src="<%= blog.coverImageURL %>" style="aspect-ratio: 4/3; object-fit: cover;" width="400" class="img-thumbnail" alt="...">
           <div class="card-body">
             <h5 class="card-title"><%= blog.title %></h5>
             <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read Blog</a>
@@ -24,3 +24,4 @@
 </body>
 
 </html>
+
