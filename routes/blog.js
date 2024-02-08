@@ -10,6 +10,6 @@ router.post('/add-new', upload.single('coverImage'), saveBlogToDB);
 
 router.get('/:id', (req, res) => {
     return res.send('Blog details page');
-}
+})
 
 module.exports = router;
