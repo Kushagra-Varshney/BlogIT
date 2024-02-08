@@ -14,6 +14,7 @@ connectDB('mongodb://127.0.0.1:27017/blogit');
 
 //ROUTES
 const userRouter = require('./routes/user');
+const blogRouter = require('./routes/blog');
 
 //VIEW ENGINE
 app.set('view engine', 'ejs');
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkAuthenticationCookie('token'));
 app.use('/users', userRouter);
+app.use('/blog', blogRouter);
 
 //ROUTES
 app.get('/', (req, res) => {
