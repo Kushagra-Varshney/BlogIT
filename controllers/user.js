@@ -1,6 +1,9 @@
 //hashing imports
 const {createHmac} = require('crypto');
 
+//token imports
+const {createUserToken} = require('../services/auth');
+
 //Importing user model
 const User = require('../models/user');
 
@@ -39,17 +42,22 @@ async function signinUser(req, res) {
     const hashedEnteredPassword = createHmac('sha256', salt).update(enteredPassword).digest('hex');
 
     if(hashedEnteredPassword === hashedPassword){
-        res.redirect('/');
+        const token = createUserToken(user);
+        res.cookie('token', token).redirect('/');
     }
     else{
-        console.log('Invalid credentials');
-        res.redirect('/users/signin');
+        res.render('signin', {error: 'Invalid credentials'});
     }
+}
+
+function signoutUser(req, res) {
+    res.clearCookie('token').redirect('/');
 }
 
 module.exports = {
     renderSignup,
     renderSignin,
     createUser,
-    signinUser
+    signinUser,
+    signoutUser
 };
