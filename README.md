@@ -12,7 +12,7 @@ Welcome to the Blog App! This web application provides a platform for users to s
 ### Blog Management
 - **Create:** Authenticated users can create new blogs with a title and content.
 - **Read:** Anyone can read blogs without the need for signing in.
-- **Update:** Authors can update the content of their own blogs.
+- **Update:** Authors can update the content of their own blogs. (Yet to Implement)
 - **Delete:** Authors have the ability to delete their blogs.
 
 ### Commenting
