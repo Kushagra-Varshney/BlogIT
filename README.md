@@ -39,7 +39,7 @@ Welcome to the Blog App! This web application provides a platform for users to s
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/blog-app.git
+   git clone https://github.com/Kushagra-Varshney/BlogIT.git
 
 2. Install Dependencies
    ```bash
